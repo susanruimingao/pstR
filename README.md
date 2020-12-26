@@ -35,6 +35,7 @@ prophageTypingR::ClusterRunQiime()
 (Option 2) if the qiime environment is installed individually, the cd-hit clustering step is separated with the rest running qiime
 under phage_typing environment
 prophageTypingR::extract_fasta()
+
 prophageTypingR::cluster_sequences(inputFile = "./extractFasta/all_phage.fasta", c = 0.99, s = 0.99, outputDir = "./extractFasta/clusterSeqs_99_99")
 
 under qiime environment:
@@ -46,12 +47,21 @@ The finall created .tree file is the final output
 Notes: the individual functions are also available if you want to run each of them separately:
 
 prophageTypingR::trimReads(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz" );
+
 prophageTypingR::assemblySpades()
+
 prophageTypingR::submit_to_PHASTER()
+
 prophageTypingR::CheckPhasterServer()
+
 prophageTypingR::extract_fasta()
+
 prophageTypingR::cluster_sequences(inputFile = "./extractFasta/all_phage.fasta", c = 0.99, s = 0.99, outputDir = "./extractFasta/clusterSeqs_99_99")
+
 prophageTypingR::create_biom_table()
+
 prophageTypingR::biom_convert()
+
 prophageTypingR::beta_diversity()
+
 prophageTypingR::neighbor_joining()
