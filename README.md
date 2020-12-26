@@ -26,7 +26,8 @@ install.packages("../prophageTypingR_0.1.0.tar.gz", repos = NULL, type="source")
 #To run the pipeline steps after submitting to PHASTER, using general function: including trim reads, spades assembly and submit the assemblies to PHASTER server
 prophageTypingR::trimAssembleSubmit(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz" );
 
-# To check the status of PHASTER server running:
+
+To check the status of PHASTER server running:
 prophageTypingR::CheckPhasterServer()
 
 (Option 1) #To start after downloading zip files from PHASTER (retrieve phage .fasta sequences, clustering and create phylogenetic tree with qiime)
