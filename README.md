@@ -25,9 +25,7 @@ Download prophageTypingR_0.1.0.tar.gz from
 https://github.com/susanruimingao/pstR.git
 
 
-Go to work directory containing raw reads
-
-# the reads name is preferred in "_R1.fastq.gz"/"_R2.fastq.gz"; otherwise specify in the command line
+Go to work directory containing raw reads, and the reads name is preferred in "_R1.fastq.gz"/"_R2.fastq.gz"; otherwise specify in the command line
 
 Conda activate phage_typing
 
