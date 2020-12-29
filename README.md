@@ -13,13 +13,13 @@ conda install -c bioconda fastp
 conda install -c bioconda spades
 
 conda install -c bioconda cd-hit
-
-The scripts "checkPhasterServer.py" and "cdHitClstr2table.pl" which are writen by Marco, should be available in the path. This will be added as a parameter in the respective step.   
+ 
 
 #If the python version is incompatible, the qiime environment can be created separately
 
 conda install -c qiime2 qiime2
 
+The scripts "checkPhasterServer.py" and "cdHitClstr2table.pl" which are writen by Marco, should be available in the path. This will be added as a parameter in the respective step.  
 
 Download prophageTypingR_0.1.0.tar.gz from
 https://github.com/susanruimingao/pstR.git
