@@ -1,7 +1,9 @@
 # pstR
-Prophage Sequence Typing writen in R language
+Prophage Sequence Typing writen in R language; 
+
 pstR version='0.3.0'
-This pstR pipeline works in R language
+
+This pstR pipeline works in R
 
 The pipleline is a continuous effort from previous PST bash pipeline: 
 author='duceppemo' version='0.2.0'
