@@ -14,6 +14,7 @@ conda install -c bioconda spades
 
 conda install -c bioconda cd-hit
 
+The scripts "checkPhasterServer.py" and "cdHitClstr2table.pl" which are writen by Marco, will be callded from home directory in this R version pipeline.  
 
 #If the python version is incompatible, the qiime environment can be created separately
 conda install -c qiime2 qiime2
