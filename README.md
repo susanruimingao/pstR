@@ -1,5 +1,5 @@
 # pstR
-Prophage Sequence Typing writen in R language; 
+Prophage Sequence Typing pipeline is developed in R language and is a R wrapper for multiple functions; 
 
 pstR version='0.3.0'
 
