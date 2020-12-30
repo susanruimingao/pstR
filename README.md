@@ -9,13 +9,13 @@ The pipleline is a continuous effort from previous PST bash pipeline:
 author='duceppemo' version='0.2.0'
 
 In a terminal, conda create a "phage_typing" environment 
-
+```
 conda install -c bioconda fastp
 
 conda install -c bioconda spades
 
 conda install -c bioconda cd-hit
- 
+```
 
 #If the python version is incompatible, the qiime environment can be created separately
 
