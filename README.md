@@ -3,79 +3,94 @@ Prophage Sequence Typing pipeline is developed in R language and is a R wrapper 
 This R version is based on a previous PST bash pipeline: 
 author='duceppemo' version='0.2.0'
 
-pstR version='0.3.0'
-
-This pstR pipeline works in R
-
-
 
 In a terminal, conda create a "phage_typing" environment 
 ```
+conda create -n phage_typing
+
+Conda activate phage_typing
+
 conda install -c bioconda fastp
 
 conda install -c bioconda spades
 
 conda install -c bioconda cd-hit
+
+conda install -c qiime2 qiime2
+
 ```
 
-#If the python version is incompatible, the qiime environment can be created separately
+#If qiime requires a different version python, which is incompatible with "phage_typing" environment, the qiime environment can be created separately
 ```
+conda create -n qiime
+
 conda install -c qiime2 qiime2
 ```
-The scripts "checkPhasterServer.py" and "cdHitClstr2table.pl" which are writen by Marco, should be available in the path. This will be added as a parameter in the respective step.  
+
+Two more scripts named "checkPhasterServer.py" and "cdHitClstr2table.pl" need to be downloaded from the folder named "script". The PATH contaiing this two scripts need to be called in R envrironment for two steps of this pipeline. 
+For example: 
+
+```
+python3 /home/CFIA-ACIA/gaoru/bin/phage_typing/checkPhasterServer.py
+perl /home/CFIA-ACIA/gaoru/bin/phage_typing/cdHitClstr2table.pl
+
 ```
 Download prophageTypingR_0.1.0.tar.gz from
+
 https://github.com/susanruimingao/pstR.git
 ```
 
-Go to work directory containing raw reads, and the reads name is preferred in "_R1.fastq.gz"/"_R2.fastq.gz"; otherwise specify in the command line
-```
-Conda activate phage_typing
-```
-Go to R environment and install the following packages
+Go to work directory containing raw reads, and the reads name is preferred in "_R1.fastq.gz"/"_R2.fastq.gz"; otherwise specify in the command line.
+
+Go to R environment and install the above downloaded prophageTyping package and four more other packages
 
 ```
 R
+install.packages("PATH/prophageTypingR_0.1.0.tar.gz", repos = NULL, type="source")
 install.package("parallel"); 
 install.package("crayon"); 
 install.package("stringr"); 
 install.package("seqinr");
-install.packages("../prophageTypingR_0.1.0.tar.gz", repos = NULL, type="source")
+
 ```
-#To run the pipeline steps until submitting to PHASTER, using general function: including trim reads, spades assembly and submit the assemblies to PHASTER server
-
+To run the pipeline steps until submitting to PHASTER, using general function: including trim reads, spades assembly and submit the assemblies to PHASTER server
+```
 prophageTypingR::trimAssembleSubmit(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz" );
+```
 
-
-#After submitting the assemlies to PHASTER, To check the status of PHASTER server running:
-
+After submitting the assemlies to PHASTER, To check the status of PHASTER server running:
+``
 prophageTypingR::CheckPhasterServer(path = "YOUR_OWN_PATH_to../checkPhasterServer.py")
+```
 
+After downloading zip files from PHASTER server 
 
-(Option 1) #After downloading zip files from PHASTER 
-(including retrieve phage .fasta sequences, clustering and create phylogenetic tree with qiime)
-
+##(Option 1): qiime is installed in the "phage_typing" environment
+One step of running to get the final phylogenetic tree file (including retrieve phage .fasta sequences, clustering and create phylogenetic tree with qiime)
+``
 prophageTypingR::ClusterRunQiime()
+```
 
+##(Option 2): if the qiime environment is installed individually.
 
-(Option 2) if the qiime environment is installed individually, the cd-hit clustering step is separated with the rest running qiime
 under phage_typing environment
-
+```
 prophageTypingR::extract_fasta()
 
 prophageTypingR::cluster_sequences(inputFile = "./extractFasta/all_phage.fasta", c = 0.99, s = 0.99, outputDir = "./extractFasta/clusterSeqs_99_99", path = "YOUR_OWN_PATH_to../cdHitClstr2table.pl")
-
+```
 
 Under qiime environment:
-
+```
 prophageTypingR::runQiime(inputFile = "./extractFasta/clusterSeqs_99_99/phage_clustered_c0.99_s0.99.fasta.clstr", sampleList = "./extractFasta/sampleList.txt", path = "YOUR_OWN_PATH_to../cdHitClstr2table.pl")
+```
 
-#The finall created .tree file is the desired output
+The finall created .tree file is the desired output
 
 
 
-###Notes: the individual functions are also available if you want to run each of them separately:
-
+OPTIONAL: the individual functions are also available if you want to run each of them separately:
+```
 prophageTypingR::trimReads(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz" );
 
 prophageTypingR::assemblySpades()
@@ -95,3 +110,4 @@ prophageTypingR::biom_convert()
 prophageTypingR::beta_diversity()
 
 prophageTypingR::neighbor_joining()
+```
