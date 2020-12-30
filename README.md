@@ -27,18 +27,13 @@ conda create -n qiime
 conda install -c qiime2 qiime2
 ```
 
-Two more scripts named "checkPhasterServer.py" and "cdHitClstr2table.pl" need to be downloaded from the folder named "script". The PATH contaiing this two scripts need to be called in R envrironment for two steps of this pipeline. 
-For example: 
+Two more scripts named "checkPhasterServer.py" and "cdHitClstr2table.pl" need to be downloaded from the folder named "script". The PATH containing this two scripts need to be called in R envrironment as puting as parameters in two steps of this pipeline. 
 
-```
-python3 /home/CFIA-ACIA/gaoru/bin/phage_typing/checkPhasterServer.py
-perl /home/CFIA-ACIA/gaoru/bin/phage_typing/cdHitClstr2table.pl
 
-```
 Download prophageTypingR_0.1.0.tar.gz from
 
 https://github.com/susanruimingao/pstR.git
-```
+
 
 Go to work directory containing raw reads, and the reads name is preferred in "_R1.fastq.gz"/"_R2.fastq.gz"; otherwise specify in the command line.
 
@@ -54,12 +49,13 @@ install.package("seqinr");
 
 ```
 To run the pipeline steps until submitting to PHASTER, using general function: including trim reads, spades assembly and submit the assemblies to PHASTER server
+
 ```
 prophageTypingR::trimAssembleSubmit(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz" );
 ```
 
 After submitting the assemlies to PHASTER, To check the status of PHASTER server running:
-``
+```
 prophageTypingR::CheckPhasterServer(path = "YOUR_OWN_PATH_to../checkPhasterServer.py")
 ```
 
@@ -67,13 +63,15 @@ After downloading zip files from PHASTER server
 
 ##(Option 1): qiime is installed in the "phage_typing" environment
 One step of running to get the final phylogenetic tree file (including retrieve phage .fasta sequences, clustering and create phylogenetic tree with qiime)
-``
+
+```
 prophageTypingR::ClusterRunQiime()
 ```
 
 ##(Option 2): if the qiime environment is installed individually.
 
 under phage_typing environment
+
 ```
 prophageTypingR::extract_fasta()
 
@@ -81,6 +79,7 @@ prophageTypingR::cluster_sequences(inputFile = "./extractFasta/all_phage.fasta",
 ```
 
 Under qiime environment:
+
 ```
 prophageTypingR::runQiime(inputFile = "./extractFasta/clusterSeqs_99_99/phage_clustered_c0.99_s0.99.fasta.clstr", sampleList = "./extractFasta/sampleList.txt", path = "YOUR_OWN_PATH_to../cdHitClstr2table.pl")
 ```
