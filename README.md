@@ -1,22 +1,12 @@
 # pstR
 Prophage Sequence Typing pipeline is developed in R language and is a R wrapper for multiple functions; 
-This R version is based on a previous PST bash pipeline: 
+This pstR is based on a previous PST bash pipeline: 
 author='duceppemo' version='0.2.0'
 
 
-In a terminal, conda create a "phage_typing" environment 
+In a terminal, conda create a "phage_typing" environment and install three required software fastp, spades and cd-hit 
 ```
-conda create -n phage_typing
-
-Conda activate phage_typing
-
-conda install -c bioconda fastp
-
-conda install -c bioconda spades
-
-conda install -c bioconda cd-hit
-
-conda install -c qiime2 qiime2
+codna create –n phage_typing –c bioconda fastp spades cd-hit
 
 ```
 
@@ -27,7 +17,7 @@ conda create -n qiime
 conda install -c qiime2 qiime2
 ```
 
-Two more scripts named "checkPhasterServer.py" and "cdHitClstr2table.pl" need to be downloaded from the folder named "script". The PATH containing this two scripts need to be called in R envrironment as puting as parameters in two steps of this pipeline. 
+Two more scripts named "checkPhasterServer.py" and "cdHitClstr2table.pl" need to be downloaded from the folder named "scripts". The PATH containing this two scripts need to be called in R envrironment as puting as parameters in two steps of this pipeline. 
 
 
 Download prophageTypingR_0.1.0.tar.gz from
@@ -82,7 +72,7 @@ Under qiime environment:
 prophageTypingR::runQiime(inputFile = "./extractFasta/clusterSeqs_99_99/phage_clustered_c0.99_s0.99.fasta.clstr", sampleList = "./extractFasta/sampleList.txt", path = "YOUR_OWN_PATH_to../cdHitClstr2table.pl")
 ```
 
-The finall created .tree file is the desired output
+***The finall created .tree file is the desired output
 
 
 
