@@ -6,11 +6,11 @@ author='duceppemo' version='0.2.0'
 
 In a terminal, conda create a "phage_typing" environment and install three software fastp(v0.20.1), spades(v3.13.2) and cd-hit(v4.8.1) 
 ```
-codna create –n phage_typing –c bioconda fastp spades cd-hit
+codna create –n phage_typing –c bioconda fastp spades cd-hit qiime2
 
 ```
 
-#If qiime requires a different version python, which is incompatible with "phage_typing" environment, the qiime environment can be created separately
+ALTERNATIVELY: If qiime requires a different version python, which is incompatible with "phage_typing" environment, the qiime environment can be created separately
 ```
 conda create -n qiime
 
@@ -44,7 +44,7 @@ To run the pipeline steps until submitting to PHASTER, using general function: i
 prophageTypingR::trimAssembleSubmit(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz" );
 ```
 
-After submitting the assemlies to PHASTER, To check the status of PHASTER server running:
+After submitting the assemlies to PHASTER, to check the status of PHASTER server running:
 ```
 prophageTypingR::CheckPhasterServer(path = "YOUR_OWN_PATH_to../checkPhasterServer.py")
 ```
