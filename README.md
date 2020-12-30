@@ -1,12 +1,13 @@
 # pstR
 Prophage Sequence Typing pipeline is developed in R language and is a R wrapper for multiple functions; 
+This R version is based on a previous PST bash pipeline: 
+author='duceppemo' version='0.2.0'
 
 pstR version='0.3.0'
 
 This pstR pipeline works in R
 
-The pipleline is a continuous effort from previous PST bash pipeline: 
-author='duceppemo' version='0.2.0'
+
 
 In a terminal, conda create a "phage_typing" environment 
 ```
@@ -31,11 +32,14 @@ Go to work directory containing raw reads, and the reads name is preferred in "_
 ```
 Conda activate phage_typing
 ```
-Go to R environment
+Go to R environment and install the following packages
 
 ```
 R
-library(parallel); library(crayon); library(stringr); library(seqinr);
+install.package("parallel"); 
+install.package("crayon"); 
+install.package("stringr"); 
+install.package("seqinr");
 install.packages("../prophageTypingR_0.1.0.tar.gz", repos = NULL, type="source")
 ```
 #To run the pipeline steps until submitting to PHASTER, using general function: including trim reads, spades assembly and submit the assemblies to PHASTER server
