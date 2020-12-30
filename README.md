@@ -71,7 +71,6 @@ prophageTypingR::ClusterRunQiime()
 ##(Option 2): if the qiime environment is installed individually.
 
 under phage_typing environment
-
 ```
 prophageTypingR::extract_fasta()
 
@@ -79,7 +78,6 @@ prophageTypingR::cluster_sequences(inputFile = "./extractFasta/all_phage.fasta",
 ```
 
 Under qiime environment:
-
 ```
 prophageTypingR::runQiime(inputFile = "./extractFasta/clusterSeqs_99_99/phage_clustered_c0.99_s0.99.fasta.clstr", sampleList = "./extractFasta/sampleList.txt", path = "YOUR_OWN_PATH_to../cdHitClstr2table.pl")
 ```
