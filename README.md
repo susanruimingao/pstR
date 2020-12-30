@@ -18,24 +18,26 @@ conda install -c bioconda cd-hit
 ```
 
 #If the python version is incompatible, the qiime environment can be created separately
-
+```
 conda install -c qiime2 qiime2
-
+```
 The scripts "checkPhasterServer.py" and "cdHitClstr2table.pl" which are writen by Marco, should be available in the path. This will be added as a parameter in the respective step.  
-
+```
 Download prophageTypingR_0.1.0.tar.gz from
 https://github.com/susanruimingao/pstR.git
-
+```
 
 Go to work directory containing raw reads, and the reads name is preferred in "_R1.fastq.gz"/"_R2.fastq.gz"; otherwise specify in the command line
-
+```
 Conda activate phage_typing
-
+```
 Go to R environment
 
-
+```
+R
+library(parallel); library(crayon); library(stringr); library(seqinr);
 install.packages("../prophageTypingR_0.1.0.tar.gz", repos = NULL, type="source")
-
+```
 #To run the pipeline steps until submitting to PHASTER, using general function: including trim reads, spades assembly and submit the assemblies to PHASTER server
 
 prophageTypingR::trimAssembleSubmit(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz" );
