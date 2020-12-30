@@ -4,7 +4,7 @@ This pstR is based on a previous PST bash pipeline:
 author='duceppemo' version='0.2.0'
 
 
-In a terminal, conda create a "phage_typing" environment and install three required software fastp, spades and cd-hit 
+In a terminal, conda create a "phage_typing" environment and install three software fastp(v0.20.1), spades(v3.13.2) and cd-hit(v4.8.1) 
 ```
 codna create –n phage_typing –c bioconda fastp spades cd-hit
 
