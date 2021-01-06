@@ -4,7 +4,7 @@ This pstR is based on a previous PST bash pipeline:
 author='duceppemo' version='0.2.0'
 
 
-In a terminal, conda create a "phage_typing" environment and install three software fastp(v0.20.1), spades(v3.13.2) and cd-hit(v4.8.1) 
+In a terminal, conda create a "phage_typing" environment and install three software fastp(v0.20.1), spades(v3.13.2) and cd-hit(v4.8.1), or qiime2 if it is possible with the environment compatibility.
 ```
 codna create –n phage_typing –c bioconda fastp spades cd-hit qiime2
 
@@ -27,28 +27,37 @@ https://github.com/susanruimingao/pstR.git
 
 Go to work directory containing raw reads, and the reads name is preferred in "_R1.fastq.gz"/"_R2.fastq.gz"; otherwise specify in the command line.
 
-Go to R environment and install the above downloaded prophageTyping package and four more other packages
+Go to R environment and install three required packages, which will be needed to be installed once. other packagesthe above downloaded  and four 
 
 ```
 R
-install.packages("PATH/prophageTypingR_0.1.0.tar.gz", repos = NULL, type="source")
 install.package("parallel"); 
 install.package("crayon"); 
 install.package("stringr"); 
 install.package("seqinr");
 
 ```
+
+Every time for enterring the R envrionment, the above downloaded prophageTypingR_0.1.0.tar.gz package need to be installed
+``` 
+install.packages("/home/CFIA-ACIA/gaoru/R_package/prophageTypingR_0.1.0.tar.gz", repos = NULL, type="source")
+```
+
 To run the pipeline steps until submitting to PHASTER, using general function: including trim reads, spades assembly and submit the assemblies to PHASTER server
+The default RawReads format suffixNameR1 = "_1.fastq.gz",suffixNameR2 = "_2.fastq.gz". Otherwise, specifiy as following:
 
 ```
 prophageTypingR::trimAssembleSubmit(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz" );
 ```
 
-After submitting the assemlies to PHASTER, to check the status of PHASTER server running:
+For continous run from last step: after submitting the assemlies to PHASTER, to check the status of PHASTER server running:
 ```
-prophageTypingR::CheckPhasterServer(path = "YOUR_OWN_PATH_to../checkPhasterServer.py")
+prophageTypingR::CheckPhasterServer(path = "/home/CFIA-ACIA/gaoru/bin/phage_typing/checkPhasterServer.py")
 ```
-
+ALTERNATIVELY: If you want to start wit some completed genomes, specify the sffix type, becasue the defaulst ones are: inputDir = "spadesOut", suffix = "_assembly_filter2000.fasta", outputDir = "PHASTEROut"
+```
+prophageTypingR::submit_to_PHASTER (inputDir = "12AdjameGenome", suffix = ".fasta", outputDir = "PHASTEROut_12AdjGenome")
+```
 After downloading zip files from PHASTER server 
 
 ##(Option 1): qiime is installed in the "phage_typing" environment
@@ -62,9 +71,9 @@ prophageTypingR::ClusterRunQiime()
 
 under phage_typing environment
 ```
-prophageTypingR::extract_fasta()
+prophageTypingR::extract_fasta(inputDir = "PHASTEROut", outputDir = "fastaRetrieve")
 
-prophageTypingR::cluster_sequences(inputFile = "./extractFasta/all_phage.fasta", c = 0.99, s = 0.99, outputDir = "./extractFasta/clusterSeqs_99_99", path = "YOUR_OWN_PATH_to../cdHitClstr2table.pl")
+prophageTypingR::cluster_sequences(inputFile = "./extractFasta/all_phage.fasta", c = 0.99, s = 0.99, outputDir = "./extractFasta/clusterSeqs_99_99", path = "/home/CFIA-ACIA/gaoru/bin/phage_typing/cdHitClstr2table.pl")
 ```
 
 Under qiime environment:
