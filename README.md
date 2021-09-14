@@ -31,10 +31,10 @@ Go to R environment and install three required packages, which will be needed to
 
 ```
 R
-install.package("parallel"); 
-install.package("crayon"); 
-install.package("stringr"); 
-install.package("seqinr");
+install.packages("parallel"); 
+install.packages("crayon"); 
+install.packages("stringr"); 
+install.packages("seqinr");
 
 ```
 
