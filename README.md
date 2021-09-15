@@ -36,6 +36,11 @@ install.packages("crayon");
 install.packages("stringr"); 
 install.packages("seqinr");
 
+library(parallel)
+library(crayon)
+library(stringr)
+library(seqinr)
+
 ```
 
 Every time for enterring the R envrionment, the above downloaded prophageTypingR_0.1.0.tar.gz package need to be installed
