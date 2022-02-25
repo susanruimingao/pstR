@@ -6,7 +6,7 @@ author='duceppemo' version='0.2.0'
 
 In a terminal, conda create a "phage_typing" environment and install three software fastp(v0.20.1), spades(v3.13.2) and cd-hit(v4.8.1), or qiime2 if it is possible with the environment compatibility.
 ```
-codna create –n phage_typing –c bioconda fastp spades cd-hit qiime2
+conda create –n phage_typing –c bioconda fastp spades cd-hit qiime2
 
 ```
 
