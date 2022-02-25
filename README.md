@@ -52,7 +52,7 @@ To run the pipeline steps until submitting to PHASTER, using general function: i
 The default RawReads format suffixNameR1 = "_1.fastq.gz",suffixNameR2 = "_2.fastq.gz". Otherwise, specifiy as following:
 
 ```
-prophageTypingR::trimAssembleSubmit(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz" );
+prophageTypingR::trimAssembleSubmit(inputDir = "rawdata",  suffixNameR1 = "_R1.fastq.gz",suffixNameR2 = "_R2.fastq.gz")
 ```
 
 For continous run from last step: after submitting the assemlies to PHASTER, to check the status of PHASTER server running:
